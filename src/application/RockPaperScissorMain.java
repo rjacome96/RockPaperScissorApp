@@ -1,22 +1,23 @@
 package application;
 	
+import controller.StartScreenController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-
+import javafx.scene.layout.AnchorPane;
 
 public class RockPaperScissorMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Group root = new Group();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("Welcome to the game of Rock, Paper, Scissor!");
-			primaryStage.setScene(scene);
+			AnchorPane root = new AnchorPane();
+			Scene startScreen = new Scene(root,400,400);
+			startScreen.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			startScreen = new StartScreenController().startHere(startScreen);
+			primaryStage.setTitle("Welcome!");
+			primaryStage.setScene(startScreen);
 			primaryStage.show();
+			primaryStage.setResizable(true);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
