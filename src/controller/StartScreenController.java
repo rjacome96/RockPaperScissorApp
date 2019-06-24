@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import application.RockPaperScissorMain;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +16,12 @@ import javafx.scene.image.ImageView;
 //import javafx.scene.text.Font;
 //import javafx.scene.text.FontWeight;
 
+/**
+ * Controller for the Start Screen of the game. As of now only contains
+ * the images for the game displayed on the screen and the start button.
+ * @author Roy Jacome
+ *
+ */
 public class StartScreenController extends AnchorPane {
 	
 	@FXML
@@ -28,10 +33,19 @@ public class StartScreenController extends AnchorPane {
 	@FXML
 	private Button startButton;
 	
+	/**
+	 * A static method that allows the main
+	 * application to call the private method {@link createStartScreen}.
+	 * @return The scene that is returned from calling the method.
+	 */
 	public static Scene getStartScreenScene() {
 		return new StartScreenController().createStartScreen();
 	}
 	
+	/**
+	 * Loads the FXML file so that this class can control the scene.
+	 * @return The start screen that the player will be introduced to.
+	 */
 	private Scene createStartScreen() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/StartScreenView.fxml"));
 		loader.setController(this);
@@ -68,6 +82,6 @@ public class StartScreenController extends AnchorPane {
 	}
 	
 	public void startGame(ActionEvent event) {
-		RockPaperScissorMain.startGame();
+		System.out.println("Button works");
 	}
 }
