@@ -28,6 +28,13 @@ public class StartScreenController extends AnchorPane {
 	@FXML
 	private Button startButton;
 	
+	/**
+	 * Override default constructor so that we can make it private.
+	 */
+	private StartScreenController() {
+		
+	}
+	
 	public static Scene getStartScreenScene() {
 		return new StartScreenController().createStartScreen();
 	}
