@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +32,18 @@ public class MainMenuScreenController extends AnchorPane {
 		}
 		
 		return mainMenuScreen;
+	}
+	
+	/**
+	 * Takes the event that the options button is pressed.
+	 * @param event
+	 */
+	public void openOptions(ActionEvent event) {
+		System.out.println("Open options");
+	}
+	
+	public void backToStartScreen(ActionEvent event) {
+		System.out.println("Back to start screen");
 	}
 
 }
