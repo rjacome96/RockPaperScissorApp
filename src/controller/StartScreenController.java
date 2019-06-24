@@ -2,17 +2,20 @@ package controller;
 
 import java.io.IOException;
 
+import application.RockPaperScissorMain;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.image.ImageView;
+//import javafx.scene.image.Image;
+//import javafx.scene.canvas.Canvas;
+//import javafx.scene.canvas.GraphicsContext;
+//import javafx.scene.paint.Color;
+//import javafx.scene.text.Font;
+//import javafx.scene.text.FontWeight;
 
 public class StartScreenController extends AnchorPane {
 	
@@ -22,6 +25,8 @@ public class StartScreenController extends AnchorPane {
 	private ImageView paperImage;
 	@FXML
 	private ImageView scissorImage;
+	@FXML
+	private Button startButton;
 	
 	public static Scene getStartScreenScene() {
 		return new StartScreenController().createStartScreen();
@@ -60,5 +65,9 @@ public class StartScreenController extends AnchorPane {
 	    */
 	    
 		return startScreen;
+	}
+	
+	public void startGame(ActionEvent event) {
+		RockPaperScissorMain.startGame();
 	}
 }

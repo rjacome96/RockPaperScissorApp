@@ -14,7 +14,7 @@ public class RockPaperScissorMain extends Application {
 			primaryStage.setTitle("Welcome!");
 			primaryStage.setScene(startScreen);
 			primaryStage.show();
-			primaryStage.setResizable(true);
+			primaryStage.setResizable(false);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -22,5 +22,9 @@ public class RockPaperScissorMain extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static void startGame() {
+		System.out.println("Start button pressed");
 	}
 }
