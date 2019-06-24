@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 
 public class RockPaperScissorMain extends Application {
 	
+	private static Stage currentStage;
+	
 	private static Stage startStage;
 	
 	private static Stage mainMenuStage;
@@ -33,19 +35,29 @@ public class RockPaperScissorMain extends Application {
 		
 		
 		startStage = primaryStage;
-		startStage.setTitle("Welcome!");
-		startStage.setScene(startScreen);
-		startStage.setResizable(false);
-		startStage.show();
+		currentStage = startStage;
+		currentStage.setTitle("Welcome!");
+		currentStage.setScene(startScreen);
+		currentStage.setResizable(false);
+		currentStage.show();
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 
-	public static void startGame() {
-		startStage.hide();
-		mainMenuStage.show();
-		System.out.println("Start button pressed");
+	public static void enterMainMenu() {
+		changeStageTo(mainMenuStage);
+	}
+
+	public static void backToStartScreen() {
+		changeStageTo(startStage);
+		
+	}
+	
+	private static void changeStageTo(Stage newStage) {
+		currentStage.hide();
+		newStage.show();
+		currentStage = newStage;
 	}
 }

@@ -75,6 +75,6 @@ public class StartScreenController extends AnchorPane {
 	}
 	
 	public void startGame(ActionEvent event) {
-		RockPaperScissorMain.startGame();
+		RockPaperScissorMain.enterMainMenu();
 	}
 }

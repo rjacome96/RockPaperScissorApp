@@ -2,9 +2,11 @@ package controller;
 
 import java.io.IOException;
 
+import application.RockPaperScissorMain;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class MainMenuScreenController extends AnchorPane {
@@ -42,8 +44,20 @@ public class MainMenuScreenController extends AnchorPane {
 		System.out.println("Open options");
 	}
 	
+	/**
+	 * When back button is pressed, call the method in main application
+	 * to switch back to the start screen.
+	 * @param event
+	 */
 	public void backToStartScreen(ActionEvent event) {
-		System.out.println("Back to start screen");
+		RockPaperScissorMain.backToStartScreen();
 	}
 
+	public void startHumanVsHuman(MouseEvent event) {
+		System.out.println("Human Vs Human");
+	}
+	
+	public void startHumanVsAI(MouseEvent event) {
+		System.out.println("Human Vs AI");
+	}
 }

@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -34,5 +35,43 @@
             </ImageView>
          </graphic>
       </Button>
+      <HBox layoutX="14.0" layoutY="240.0" onMouseClicked="#startHumanVsHuman" prefHeight="108.0" prefWidth="228.0">
+         <children>
+            <ImageView fitHeight="127.0" fitWidth="101.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/HumanClipArt.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VS" translateY="20.0" wrappingWidth="43.2060546875">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="109.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/HumanClipArt.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="360.0" layoutY="240.0" onMouseClicked="#startHumanVsAI" prefHeight="108.0" prefWidth="228.0">
+         <children>
+            <ImageView fitHeight="127.0" fitWidth="101.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/HumanClipArt.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VS" translateY="20.0" wrappingWidth="43.2060546875">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="109.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/ComputerClipArt.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
 </fx:root>
