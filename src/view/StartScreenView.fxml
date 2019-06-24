@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <fx:root prefHeight="500.0" prefWidth="500.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
-		<Text layoutX="74.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's Play!" wrappingWidth="352.9807586669922" AnchorPane.bottomAnchor="413.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="73.01924133300781" AnchorPane.topAnchor="32.0">
+		<Text layoutX="74.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's Play!" wrappingWidth="352.9807586669922" AnchorPane.bottomAnchor="407.1884765625" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="73.01924133300781" AnchorPane.topAnchor="37.8115234375">
          <font>
             <Font name="Tw Cen MT" size="82.0" />
          </font></Text>
+      <ImageView fx:id="rockImage" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
 	</children>
 </fx:root>
