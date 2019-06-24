@@ -17,7 +17,11 @@ import javafx.scene.text.FontWeight;
 public class StartScreenController extends AnchorPane {
 	
 	@FXML
-	ImageView rockImage;
+	private ImageView rockImage;
+	@FXML
+	private ImageView paperImage;
+	@FXML
+	private ImageView scissorImage;
 	
 	public static Scene getStartScreenScene() {
 		return new StartScreenController().createStartScreen();
@@ -34,9 +38,13 @@ public class StartScreenController extends AnchorPane {
 			e1.printStackTrace();
 		}
 		
-		Image rock = new Image("File:gameImages/RockImage.jpg");
+		//rockImage.setImage(new Image("File:gameImages/RockClipArt.png"));
+		//paperImage.setImage(new Image("File:gameImages/PaperClipArt.png"));
+		//scissorImage.setImage(new Image("File:gameImages/ScissorClipArt.png"));
+		
 		
 		// Testing out Canvas and GraphicsContent
+		/*
 		Canvas canvas = new Canvas(400, 200);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 	    gc.setFill(Color.RED);
@@ -48,7 +56,8 @@ public class StartScreenController extends AnchorPane {
 	    gc.strokeText("Hello, World!", 60, 50);
 	    //this.getChildren().add(canvas);
 	    
-	    gc.drawImage(rock, 14, 237);
+	    //gc.drawImage(rock, 14, 237);
+	    */
 	    
 		return startScreen;
 	}
