@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,6 +27,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="512.0" layoutY="29.0" mnemonicParsing="false" onAction="#openOptions" prefHeight="47.0" prefWidth="44.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="29.0">
          <graphic>
@@ -34,6 +39,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <HBox layoutX="14.0" layoutY="240.0" onMouseClicked="#startHumanVsHuman" prefHeight="108.0" prefWidth="228.0">
          <children>
@@ -53,6 +61,12 @@
                </image>
             </ImageView>
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </HBox>
       <HBox layoutX="360.0" layoutY="240.0" onMouseClicked="#startHumanVsAI" prefHeight="108.0" prefWidth="228.0">
          <children>
@@ -72,6 +86,9 @@
                </image>
             </ImageView>
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
    </children>
 </fx:root>
