@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import application.RockPaperScissorMain;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,13 @@ public class StartScreenController extends AnchorPane {
 	private ImageView scissorImage;
 	@FXML
 	private Button startButton;
+	
+	/**
+	 * Override default constructor so that we can make it private.
+	 */
+	private StartScreenController() {
+		
+	}
 	
 	/**
 	 * A static method that allows the main
@@ -81,7 +89,12 @@ public class StartScreenController extends AnchorPane {
 		return startScreen;
 	}
 	
+	/**
+	 * Method is run when the player wants to begin
+	 * the game by clicking the Start button.
+	 * @param event
+	 */
 	public void startGame(ActionEvent event) {
-		System.out.println("Button works");
+		RockPaperScissorMain.enterMainMenu();
 	}
 }
