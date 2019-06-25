@@ -42,6 +42,12 @@ public class RockPaperScissorMain extends Application {
 		currentStage.show();
 	}
 	
+	private static void changeStageTo(Stage newStage) {
+		currentStage.hide();
+		newStage.show();
+		currentStage = newStage;
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -54,10 +60,12 @@ public class RockPaperScissorMain extends Application {
 		changeStageTo(startStage);
 		
 	}
-	
-	private static void changeStageTo(Stage newStage) {
-		currentStage.hide();
-		newStage.show();
-		currentStage = newStage;
+
+	public static void playAgainstHuman() {
+		//changeStageTo(humanStage);
+	}
+
+	public static void playAgainstAI() {
+		//changeStageTo(playAIStage);
 	}
 }

@@ -74,6 +74,11 @@ public class StartScreenController extends AnchorPane {
 		return startScreen;
 	}
 	
+	/**
+	 * Method is run when the player wants to begin
+	 * the game by clicking the Start button.
+	 * @param event
+	 */
 	public void startGame(ActionEvent event) {
 		RockPaperScissorMain.enterMainMenu();
 	}
