@@ -1,6 +1,10 @@
 package application;
 	
+import java.util.EmptyStackException;
+import java.util.Stack;
+
 import controller.MainMenuScreenController;
+import controller.PlayAIScreenController;
 import controller.StartScreenController;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -17,46 +21,86 @@ public class RockPaperScissorMain extends Application {
 	
 	private static Stage currentStage;
 	
+	private static Stage previousStage;
+	
 	private static Stage startStage;
 	
 	private static Stage mainMenuStage;
 	
+	private static Stage playAIStage;
+	
 	private static Scene startScreen;
 	
 	private static Scene mainMenuScreen;
+	
+	private static Scene playAIScreen;
+	
+	private static Stack<Stage> stageStack = new Stack<>();
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			startScreen = StartScreenController.getStartScreenScene();
 			mainMenuScreen = MainMenuScreenController.getMainMenuScreen();
+			playAIScreen = PlayAIScreenController.getPlayAIScreen();
 			startScreen.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
+		// Set up main menu stage
 		mainMenuStage = new Stage();
 		mainMenuStage.setTitle("Main Menu");
-		mainMenuStage.setScene(mainMenuScreen);
 		mainMenuStage.setResizable(false);
+		mainMenuStage.setScene(mainMenuScreen);
 		
+		// Set up the AI play stage
+		playAIStage = new Stage();
+		playAIStage.setTitle("Playing against Computer!");
+		playAIStage.setResizable(false);
+		playAIStage.setScene(playAIScreen);
 		
+		// Set up the start screen stage
 		startStage = primaryStage;
 		currentStage = startStage;
+		previousStage = startStage;
+		stageStack.push(currentStage);
 		currentStage.setTitle("Welcome!");
 		currentStage.setScene(startScreen);
 		currentStage.setResizable(false);
 		currentStage.show();
 	}
 	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	/**
+	 * Helper method used to easily switch among
+	 * stages.
+	 * @param newStage
+	 */
 	private static void changeStageTo(Stage newStage) {
+		previousStage = currentStage;
 		currentStage.hide();
 		newStage.show();
 		currentStage = newStage;
+		stageStack.push(currentStage);
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
+	private static void changeToPreviousStage() {
+		if(!stageStack.isEmpty()) {
+			
+			Stage stageToSwitchTo = stageStack.pop();
+			try {
+				stageToSwitchTo = stageStack.pop();
+			}
+			catch(EmptyStackException e) {
+				System.out.println("Last stage was popped");
+			}
+			
+			changeStageTo(stageToSwitchTo);
+		}
 	}
 	
 	public static void enterMainMenu() {
@@ -73,6 +117,10 @@ public class RockPaperScissorMain extends Application {
 	}
 
 	public static void playAgainstAI() {
-		//changeStageTo(playAIStage);
+		changeStageTo(playAIStage);
+	}
+
+	public static void previousStage() {
+		changeToPreviousStage();
 	}
 }

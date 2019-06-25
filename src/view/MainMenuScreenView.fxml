@@ -12,11 +12,11 @@
 
 <fx:root prefHeight="499.0" prefWidth="628.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="202.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Mode" AnchorPane.topAnchor="145.99609375">
+      <Text layoutX="202.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Mode" underline="true" AnchorPane.topAnchor="145.99609375">
          <font>
             <Font size="30.0" />
          </font></Text>
-      <Button layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#backToStartScreen" prefHeight="55.0" prefWidth="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="33.0">
+      <Button layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#previousStage" prefHeight="55.0" prefWidth="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="33.0">
          <font>
             <Font size="19.0" />
          </font>
@@ -43,7 +43,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <HBox layoutX="14.0" layoutY="240.0" onMouseClicked="#startHumanVsHuman" prefHeight="108.0" prefWidth="228.0">
+      <HBox layoutX="14.0" layoutY="240.0" onMouseClicked="#startHumanVsHuman" prefHeight="108.0" prefWidth="228.0" style="-fx-background-color: gray;">
          <children>
             <ImageView fitHeight="127.0" fitWidth="101.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -68,7 +68,7 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <HBox layoutX="360.0" layoutY="240.0" onMouseClicked="#startHumanVsAI" prefHeight="108.0" prefWidth="228.0">
+      <HBox layoutX="360.0" layoutY="240.0" onMouseClicked="#startHumanVsAI" prefHeight="108.0" prefWidth="228.0" style="-fx-background-color: gray;">
          <children>
             <ImageView fitHeight="127.0" fitWidth="101.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>

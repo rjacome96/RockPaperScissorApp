@@ -65,6 +65,10 @@ public class MainMenuScreenController extends AnchorPane {
 	public void backToStartScreen(ActionEvent event) {
 		RockPaperScissorMain.backToStartScreen();
 	}
+	
+	public void previousStage(ActionEvent event) {
+		RockPaperScissorMain.previousStage();
+	}
 
 	/**
 	 * When player wants to play against a human, this method is run.
