@@ -12,8 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class PlayAIScreenController extends AnchorPane {
+	
+	@FXML
+	private Text resultText;
 	
 	@FXML
 	private ImageView aiChoice;
@@ -56,6 +60,8 @@ public class PlayAIScreenController extends AnchorPane {
 	            aiChoice.setImage(choices[random]);
 	        }
 	    };
+	    
+	    resultText.setOpacity(0);
 	    
 		return playAIScreen;
 	}

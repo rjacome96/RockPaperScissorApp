@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: none;" stylesheets="@../application/application.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #4286f4;" stylesheets="@../application/application.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<Text layoutX="74.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's Play!" wrappingWidth="352.9807586669922" AnchorPane.bottomAnchor="407.1884765625" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="73.01924133300781" AnchorPane.topAnchor="37.8115234375">
          <font>

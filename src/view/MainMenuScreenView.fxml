@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="499.0" prefWidth="628.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="499.0" prefWidth="628.0" style="-fx-background-color: #4286f4;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="202.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Mode" underline="true" AnchorPane.topAnchor="145.99609375">
          <font>
