@@ -42,7 +42,7 @@ public class Rock extends GameObject {
 			}
 		}
 		
-		throw new IllegalArgumentException("Game Object was not found to either draw, win, or lose against " + getName());
+		throw new IllegalArgumentException(o.getName() + " was not found to either draw, win, or lose against " + getName());
 	}
 
 	@Override
