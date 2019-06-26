@@ -20,7 +20,10 @@ public class PlayAIScreenController extends AnchorPane {
 	private Text resultText;
 	
 	@FXML
-	private ImageView aiChoice;
+	private ImageView slidingDoor, aiChoice;
+	
+	private double SLIDING_DOOR_X;
+	private double SLIDING_DOOR_Y;
 	
 	private Image[] choices = {new Image("File:gameImages/RockClipArt.png"),
 			new Image("File:gameImages/PaperClipArt.png"),
@@ -56,11 +59,11 @@ public class PlayAIScreenController extends AnchorPane {
 			@Override
 	        public void handle(long currentNanoTime){
 	 
-	            int random = (int)(Math.random() * 3); 
-	            aiChoice.setImage(choices[random]);
 	        }
 	    };
 	    
+	    SLIDING_DOOR_X = slidingDoor.getX();
+	    SLIDING_DOOR_Y = slidingDoor.getY();
 	    resultText.setOpacity(0);
 	    
 		return playAIScreen;
@@ -88,6 +91,24 @@ public class PlayAIScreenController extends AnchorPane {
 	
 	public void restartGame(ActionEvent event) {
 		System.out.println("Restart game button is pressed");
+		resetAIChoice();
+		resetSlidingDoor();
+	}
+	
+	public Object makeAIChoose() {
+		// TODO Create the classes and return the appropriate class
+		int random = (int)(Math.random() * 3); 
+        aiChoice.setImage(choices[random]);
+        return null;
+	}
+	
+	private void resetSlidingDoor() {
+		slidingDoor.setX(SLIDING_DOOR_X);
+		slidingDoor.setY(SLIDING_DOOR_Y);
+	}
+	
+	private void resetAIChoice() {
+		aiChoice.setImage(null);
 	}
 	
 	public void previousStage(ActionEvent e) {
