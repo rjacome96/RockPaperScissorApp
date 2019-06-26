@@ -22,16 +22,59 @@ public class PlayAIScreenController extends AnchorPane {
 	@FXML
 	private ImageView slidingDoor, aiChoice;
 	
-	private double SLIDING_DOOR_X;
-	private double SLIDING_DOOR_Y;
+	private static double CLOSED_SLIDING_DOOR_X;
+	private static double CLOSED_SLIDING_DOOR_Y;
+	private static double DOOR_OPENED_Y = -138;
 	
-	private Image[] choices = {new Image("File:gameImages/RockClipArt.png"),
+	private static Image[] choices = {new Image("File:gameImages/RockClipArt.png"),
 			new Image("File:gameImages/PaperClipArt.png"),
 			new Image("File:gameImages/ScissorClipArt.png")};
 	
 	private static final Image AI_DEFAULT_CHOICE = new Image("File:gameImages/AIThinkingClipArt.png");
-	private static AnimationTimer animationTimerSwitch = null;
+	
+	private static AnimationTimer openSlidingDoor = null;
+	private static AnimationTimer closeSlidingDoor = null;
 		
+	
+	{
+		openSlidingDoor = new AnimationTimer(){	
+			@Override
+	        public void handle(long currentNanoTime){
+				double currentDoorY = slidingDoor.getLayoutY();
+				
+				if(currentDoorY > DOOR_OPENED_Y) {
+					System.out.println(currentDoorY);
+					slidingDoor.setLayoutY(currentDoorY - 2);
+				}
+				else {
+					stop();
+				}
+				
+				System.out.println("Opening " + currentDoorY);
+	        }
+	    };
+	    
+	    closeSlidingDoor = new AnimationTimer() {
+
+			@Override
+			public void handle(long now) {
+				double currentDoorY = slidingDoor.getLayoutY();
+				
+				if(currentDoorY < CLOSED_SLIDING_DOOR_Y) {
+					System.out.println(currentDoorY);
+					slidingDoor.setLayoutY(currentDoorY + 2);
+				}
+				else {
+					stop();
+				}
+				
+				System.out.println("Closing" + currentDoorY);
+				
+			}
+	    	
+	    };
+	}
+	
 	/**
 	 * Overriding the default no arg constructor
 	 * to make it private.
@@ -65,16 +108,9 @@ public class PlayAIScreenController extends AnchorPane {
 			e1.printStackTrace();
 		}
 		
-		
-		animationTimerSwitch = new AnimationTimer(){	
-			@Override
-	        public void handle(long currentNanoTime){
-	 
-	        }
-	    };
 	    
-	    SLIDING_DOOR_X = slidingDoor.getX();
-	    SLIDING_DOOR_Y = slidingDoor.getY();
+	    CLOSED_SLIDING_DOOR_X = slidingDoor.getLayoutX();
+	    CLOSED_SLIDING_DOOR_Y = slidingDoor.getLayoutY();
 	    resultText.setOpacity(0);
 	    
 		return playAIScreen;
@@ -84,14 +120,14 @@ public class PlayAIScreenController extends AnchorPane {
 	 * Method that begins the animation timer.
 	 */
 	public static void startAnimationTimer() {
-		animationTimerSwitch.start();
+		//openSlidingDoor.start();
 	}
 	
 	/**
 	 * Method that stops the animation timer.
 	 */
 	public static void stopAnimationTimer() {
-		animationTimerSwitch.stop();
+		//openSlidingDoor.stop();
 	}
 	
 	/**
@@ -142,8 +178,8 @@ public class PlayAIScreenController extends AnchorPane {
 	 * Resets the sliding door back to its closing position.
 	 */
 	private void resetSlidingDoor() {
-		slidingDoor.setX(SLIDING_DOOR_X);
-		slidingDoor.setY(SLIDING_DOOR_Y);
+		slidingDoor.setLayoutX(CLOSED_SLIDING_DOOR_X);
+		slidingDoor.setLayoutY(CLOSED_SLIDING_DOOR_Y);
 	}
 	
 	/**

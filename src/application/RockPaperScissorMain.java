@@ -19,6 +19,11 @@ import javafx.scene.Scene;
  */
 public class RockPaperScissorMain extends Application {
 	
+	
+	/*
+	 * FOR EACH CLASS, FXML CAN BE SET USING INSTANCE INITIALIZERS
+	 */
+	
 	private static Stage currentStage;
 	
 	private static Stage previousStage;
@@ -118,7 +123,7 @@ public class RockPaperScissorMain extends Application {
 
 	public static void playAgainstAI() {
 		changeStageTo(playAIStage);
-		PlayAIScreenController.startAnimationTimer();
+		//PlayAIScreenController.startAnimationTimer();
 	}
 
 	public static void previousStage() {
