@@ -5,11 +5,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="600.0" prefWidth="700.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="600.0" prefWidth="680.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#previousStage" prefHeight="34.0" prefWidth="52.0">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#previousStage" prefHeight="34.0" prefWidth="52.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <ImageView fitHeight="100.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -18,9 +19,54 @@
             </ImageView>
          </graphic>
          <cursor>
-            <Cursor fx:constant="MOVE" />
+            <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="271.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Playing agaisnt AI" wrappingWidth="141.0755615234375" />
+      <Text layoutX="179.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Win or Lose Message" wrappingWidth="326.9205322265625">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Button layoutX="622.0" layoutY="16.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="34.0" prefWidth="55.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/ResetClipArt.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fx:id="aiChoice" fitHeight="267.0" fitWidth="370.0" layoutX="174.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../gameImages/QuestionMarkClipArt.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="36.0" layoutY="419.0" onMouseClicked="#rockSelected" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../gameImages/RockClipArt.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="419.0" onMouseClicked="#paperSelected" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../gameImages/PaperClipArt.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="475.0" layoutY="419.0" onMouseClicked="#scissorSelected" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../gameImages/ScissorClipArt.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </fx:root>

@@ -118,6 +118,7 @@ public class RockPaperScissorMain extends Application {
 
 	public static void playAgainstAI() {
 		changeStageTo(playAIStage);
+		PlayAIScreenController.startAnimationTimer();
 	}
 
 	public static void previousStage() {
