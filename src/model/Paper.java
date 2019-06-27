@@ -6,9 +6,10 @@ import java.util.List;
 
 public class Paper extends GameObject {
 	
-	private static final Paper paperObject = new Paper();
-	private final List<GameObject> winsAgainst = Arrays.asList(Rock.getRockObject());
-	private final List<GameObject> losesAgainst = Arrays.asList(Scissor.getScissorObject());
+	private static Paper paperObject = new Paper();
+	
+	private static final List<GameObject> winsAgainst = Arrays.asList(Rock.getRockObject());
+	private static final List<GameObject> losesAgainst = Arrays.asList(Scissor.getScissorObject());
 	
 	private Paper() {
 		super("Paper", "File:gameImages/PaperClipArt.png");
@@ -24,7 +25,7 @@ public class Paper extends GameObject {
 		if(o.equals(this)) {
 			return 0;
 		}
-		
+				
 		Iterator<GameObject> iter = winsAgainst.iterator();
 		// check if Paper wins against this object
 		while(iter.hasNext()) {
@@ -37,11 +38,11 @@ public class Paper extends GameObject {
 		// check if Paper loses to this object
 		while(iter.hasNext()) {
 			if(o.equals(iter.next())) {
-				return 0;
+				return -1;
 			}
 		}
 		
-		throw new IllegalArgumentException(o.getName() + " was not found to either draw, win, or lose against " + getName());
+		throw new IllegalArgumentException(getName() + " was not found to either draw, win, or lose against " + o.getName());
 	}
 
 	@Override

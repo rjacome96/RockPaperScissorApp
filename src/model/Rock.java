@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Rock extends GameObject {
 	
-	private static final Rock rockObject = new Rock();
+	private static Rock rockObject = new Rock();
 	
-	private final List<GameObject> winsAgainst = Arrays.asList(Scissor.getScissorObject());
-	private final List<GameObject> losesAgainst = Arrays.asList(Paper.getPaperObject());
+	private static final List<GameObject> winsAgainst = Arrays.asList(Scissor.getScissorObject());
+	private static final List<GameObject> losesAgainst = Arrays.asList(Paper.getPaperObject());
 	
 	private Rock() {
 		super("Rock", "File:gameImages/RockClipArt.png");
@@ -38,11 +38,11 @@ public class Rock extends GameObject {
 		// check if Rock loses to this object
 		while(iter.hasNext()) {
 			if(o.equals(iter.next())) {
-				return 0;
+				return -1;
 			}
 		}
 		
-		throw new IllegalArgumentException(o.getName() + " was not found to either draw, win, or lose against " + getName());
+		throw new IllegalArgumentException(getName() + " was not found to either draw, win, or lose against " + o.getName());
 	}
 
 	@Override
@@ -54,7 +54,6 @@ public class Rock extends GameObject {
 		Rock rockObj = (Rock)o;
 		
 		return rockObj==this ? true : false;
-		
 	}
 
 }

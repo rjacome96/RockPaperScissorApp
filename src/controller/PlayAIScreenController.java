@@ -13,6 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import model.GameObject;
+import model.Paper;
+import model.Rock;
+import model.Scissor;
 
 public class PlayAIScreenController extends AnchorPane {
 	
@@ -20,15 +25,13 @@ public class PlayAIScreenController extends AnchorPane {
 	private Text resultText;
 	
 	@FXML
-	private ImageView slidingDoor, aiChoice;
+	private ImageView slidingDoor, aiChoiceImage;
 	
 	private static double CLOSED_SLIDING_DOOR_X;
 	private static double CLOSED_SLIDING_DOOR_Y;
 	private static double DOOR_OPENED_Y = -138;
 	
-	private static Image[] choices = {new Image("File:gameImages/RockClipArt.png"),
-			new Image("File:gameImages/PaperClipArt.png"),
-			new Image("File:gameImages/ScissorClipArt.png")};
+	private static GameObject[] choices = {Rock.getRockObject(), Paper.getPaperObject(), Scissor.getScissorObject()};
 	
 	private static final Image AI_DEFAULT_CHOICE = new Image("File:gameImages/AIThinkingClipArt.png");
 	
@@ -43,14 +46,11 @@ public class PlayAIScreenController extends AnchorPane {
 				double currentDoorY = slidingDoor.getLayoutY();
 				
 				if(currentDoorY > DOOR_OPENED_Y) {
-					System.out.println(currentDoorY);
-					slidingDoor.setLayoutY(currentDoorY - 2);
+					slidingDoor.setLayoutY(currentDoorY - 5);
 				}
 				else {
 					stop();
 				}
-				
-				System.out.println("Opening " + currentDoorY);
 	        }
 	    };
 	    
@@ -61,15 +61,11 @@ public class PlayAIScreenController extends AnchorPane {
 				double currentDoorY = slidingDoor.getLayoutY();
 				
 				if(currentDoorY < CLOSED_SLIDING_DOOR_Y) {
-					System.out.println(currentDoorY);
-					slidingDoor.setLayoutY(currentDoorY + 2);
+					slidingDoor.setLayoutY(currentDoorY + 5);
 				}
 				else {
 					stop();
 				}
-				
-				System.out.println("Closing" + currentDoorY);
-				
 			}
 	    	
 	    };
@@ -112,6 +108,7 @@ public class PlayAIScreenController extends AnchorPane {
 	    CLOSED_SLIDING_DOOR_X = slidingDoor.getLayoutX();
 	    CLOSED_SLIDING_DOOR_Y = slidingDoor.getLayoutY();
 	    resultText.setOpacity(0);
+	    resultText.setTextAlignment(TextAlignment.CENTER);
 	    
 		return playAIScreen;
 	}
@@ -136,6 +133,7 @@ public class PlayAIScreenController extends AnchorPane {
 	 */
 	public void rockSelected(MouseEvent event) {
 		System.out.println("Rock selected");
+		determineEndGame(Rock.getRockObject());
 	}
 	
 	/**
@@ -144,6 +142,7 @@ public class PlayAIScreenController extends AnchorPane {
 	 */
 	public void paperSelected(MouseEvent event) {
 		System.out.println("Paper selected");
+		determineEndGame(Paper.getPaperObject());
 	}
 	
 	/**
@@ -152,6 +151,7 @@ public class PlayAIScreenController extends AnchorPane {
 	 */
 	public void scissorSelected(MouseEvent event) {
 		System.out.println("Scissor selected");
+		determineEndGame(Scissor.getScissorObject());
 	}
 	
 	/**
@@ -163,15 +163,42 @@ public class PlayAIScreenController extends AnchorPane {
 	}
 	
 	/**
+	 * Wraps up all decisions made and decide who won.
+	 */
+	private void determineEndGame(GameObject playerChoice) {
+		
+		restartGame();
+		
+		GameObject aiChoiceObject = getAIDecision();
+		aiChoiceImage.setImage(new Image(aiChoiceObject.getFileURL()));
+		System.out.println("AI chose: " + aiChoiceObject.getName() + " - Player chose: " + playerChoice.getName());
+		
+		openDoor();
+		
+		int result = playerChoice.compareTo(aiChoiceObject);
+		
+		if(result == 0) {
+			resultText.setText("Draw!");
+		}
+		else if(result < 0) {
+			resultText.setText("Computer wins!");
+		}
+		else if(result > 0) {
+			resultText.setText("You win!");
+		}
+		
+		resultText.setOpacity(1);
+	}
+	
+	/**
 	 * When called, the AI will be given a random choice to display
 	 * the image as its own choice.
 	 * @return The move the that the AI chose.
 	 */
-	public Object makeAIChoose() {
-		// TODO Create the classes and return the appropriate class
+	private GameObject getAIDecision() {
 		int random = (int)(Math.random() * 3); 
-        aiChoice.setImage(choices[random]);
-        return null;
+		GameObject aiChoiceObject = choices[random];
+        return aiChoiceObject;
 	}
 	
 	/**
@@ -186,7 +213,24 @@ public class PlayAIScreenController extends AnchorPane {
 	 * Changes the image for the AI back to default.
 	 */
 	private void resetAIChoice() {
-		aiChoice.setImage(AI_DEFAULT_CHOICE);
+		aiChoiceImage.setImage(AI_DEFAULT_CHOICE);
+	}
+	
+	private void resetResultText() {
+		resultText.setText("");
+		resultText.setOpacity(0);
+	}
+	
+	private void openDoor() {
+		openSlidingDoor.stop();
+		resetSlidingDoor();
+		openSlidingDoor.start();
+	}
+	
+	private void closeDoor() {
+		closeSlidingDoor.stop();
+		resetSlidingDoor();
+		closeSlidingDoor.start();
 	}
 	
 	/**
@@ -204,7 +248,10 @@ public class PlayAIScreenController extends AnchorPane {
 	 */
 	private void restartGame() {
 		System.out.println("Restart game button is pressed");
+		openSlidingDoor.stop();
+		closeSlidingDoor.stop();
 		resetAIChoice();
 		resetSlidingDoor();
+		resetResultText();
 	}
 }

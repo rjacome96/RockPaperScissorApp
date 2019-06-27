@@ -6,9 +6,10 @@ import java.util.List;
 
 public class Scissor extends GameObject {
 	
-	private static final Scissor scissorObject = new Scissor();
-	private final List<GameObject> winsAgainst = Arrays.asList(Paper.getPaperObject());
-	private final List<GameObject> losesAgainst = Arrays.asList(Rock.getRockObject());
+	private static Scissor scissorObject = new Scissor();
+	
+	private static final List<GameObject> winsAgainst = Arrays.asList(Paper.getPaperObject());
+	private static final List<GameObject> losesAgainst = Arrays.asList(Rock.getRockObject());
 
 	private Scissor() {
 		super("Scissor", "File:gameImages/ScissorClipArt.png");
@@ -24,9 +25,9 @@ public class Scissor extends GameObject {
 		if(o.equals(this)) {
 			return 0;
 		}
-		
+				
 		Iterator<GameObject> iter = winsAgainst.iterator();
-		// check if Rock wins against this object
+		// check if Scissor wins against this object
 		while(iter.hasNext()) {
 			if(o.equals(iter.next())) {
 				return 1;
@@ -34,14 +35,14 @@ public class Scissor extends GameObject {
 		}
 		
 		iter = losesAgainst.iterator();
-		// check if Rock loses to this object
+		// check if Scissor loses to this object
 		while(iter.hasNext()) {
 			if(o.equals(iter.next())) {
-				return 0;
+				return -1;
 			}
 		}
 		
-		throw new IllegalArgumentException(o.getName() + " was not found to either draw, win, or lose against " + getName());
+		throw new IllegalArgumentException(getName() + " was not found to either draw, win, or lose against " + o.getName());
 	}
 
 	@Override
