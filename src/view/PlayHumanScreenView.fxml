@@ -4,9 +4,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<fx:root prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #4286f4 #4286f4;" type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<fx:root prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #4286f4 #4286f4;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <graphic>
@@ -17,5 +17,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Text layoutX="236.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Human!" wrappingWidth="107.2060546875" />
    </children>
 </fx:root>

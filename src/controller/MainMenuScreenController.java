@@ -68,6 +68,11 @@ public class MainMenuScreenController extends AnchorPane {
 		RockPaperScissorMain.backToStartScreen();
 	}
 	
+	
+	/**
+	 * Method that returns to the previous screen that led to this screen.
+	 * @param event
+	 */
 	public void previousStage(ActionEvent event) {
 		RockPaperScissorMain.previousStage();
 	}

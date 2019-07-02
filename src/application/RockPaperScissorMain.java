@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import controller.MainMenuScreenController;
 import controller.PlayAIScreenController;
+import controller.PlayHumanScreenController;
 import controller.StartScreenController;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -52,6 +53,7 @@ public class RockPaperScissorMain extends Application {
 			startScreen = StartScreenController.getStartScreenScene();
 			mainMenuScreen = MainMenuScreenController.getMainMenuScreen();
 			playAIScreen = PlayAIScreenController.getPlayAIScreen();
+			playHumanScreen = PlayHumanScreenController.getPlayHumanScreen();
 			startScreen.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -68,6 +70,12 @@ public class RockPaperScissorMain extends Application {
 		playAIStage.setTitle("Playing against Computer!");
 		playAIStage.setResizable(false);
 		playAIStage.setScene(playAIScreen);
+		
+		// Set up the Human play stage
+		playHumanStage = new Stage();
+		playHumanStage.setTitle("Playing against Human!");
+		playHumanStage.setResizable(false);
+		playHumanStage.setScene(playHumanScreen);
 		
 		// Set up the start screen stage
 		startStage = primaryStage;
@@ -97,6 +105,10 @@ public class RockPaperScissorMain extends Application {
 		stageStack.push(currentStage);
 	}
 	
+	/**
+	 * Method is called whenever user wants to return to a previous scene.
+	 * Stack pops the top scene.
+	 */
 	private static void changeToPreviousStage() {
 		if(!stageStack.isEmpty()) {
 			
@@ -126,7 +138,6 @@ public class RockPaperScissorMain extends Application {
 
 	public static void playAgainstAI() {
 		changeStageTo(playAIStage);
-		//PlayAIScreenController.startAnimationTimer();
 	}
 
 	public static void previousStage() {
