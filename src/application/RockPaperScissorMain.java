@@ -34,11 +34,15 @@ public class RockPaperScissorMain extends Application {
 	
 	private static Stage playAIStage;
 	
+	private static Stage playHumanStage;
+	
 	private static Scene startScreen;
 	
 	private static Scene mainMenuScreen;
 	
 	private static Scene playAIScreen;
+	
+	private static Scene playHumanScreen;
 	
 	private static Stack<Stage> stageStack = new Stack<>();
 	
@@ -114,11 +118,10 @@ public class RockPaperScissorMain extends Application {
 
 	public static void backToStartScreen() {
 		changeStageTo(startStage);
-		
 	}
 
 	public static void playAgainstHuman() {
-		//changeStageTo(humanStage);
+		changeStageTo(playHumanStage);
 	}
 
 	public static void playAgainstAI() {
