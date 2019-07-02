@@ -27,7 +27,6 @@ public class PlayAIScreenController extends AnchorPane {
 	@FXML
 	private ImageView slidingDoor, aiChoiceImage;
 	
-	private static double CLOSED_SLIDING_DOOR_X;
 	private static double CLOSED_SLIDING_DOOR_Y;
 	private static double DOOR_OPENED_Y = -138;
 	
@@ -105,7 +104,6 @@ public class PlayAIScreenController extends AnchorPane {
 		}
 		
 	    
-	    CLOSED_SLIDING_DOOR_X = slidingDoor.getLayoutX();
 	    CLOSED_SLIDING_DOOR_Y = slidingDoor.getLayoutY();
 	    resultText.setOpacity(0);
 	    resultText.setTextAlignment(TextAlignment.CENTER);
@@ -205,7 +203,6 @@ public class PlayAIScreenController extends AnchorPane {
 	 * Resets the sliding door back to its closing position.
 	 */
 	private void resetSlidingDoor() {
-		slidingDoor.setLayoutX(CLOSED_SLIDING_DOOR_X);
 		slidingDoor.setLayoutY(CLOSED_SLIDING_DOOR_Y);
 	}
 	
