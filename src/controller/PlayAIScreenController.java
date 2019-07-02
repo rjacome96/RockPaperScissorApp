@@ -239,6 +239,7 @@ public class PlayAIScreenController extends AnchorPane {
 	 */
 	public void previousStage(ActionEvent e) {
 		stopAnimationTimer();
+		restartGame();
 		RockPaperScissorMain.previousStage();
 	}
 
