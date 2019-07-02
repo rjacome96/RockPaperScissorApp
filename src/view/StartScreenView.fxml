@@ -14,17 +14,17 @@
          <font>
             <Font name="Tw Cen MT" size="82.0" />
          </font></Text>
-      <ImageView fx:id="rockImage" fitHeight="98.0" fitWidth="132.0" layoutX="14.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rockImage" fitHeight="98.0" fitWidth="132.0" layoutX="14.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../gameImages/RockClipArt.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="paperImage" fitHeight="115.0" fitWidth="119.0" layoutX="199.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="paperImage" fitHeight="115.0" fitWidth="119.0" layoutX="199.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../gameImages/PaperClipArt.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="scissorImage" fitHeight="115.0" fitWidth="119.0" layoutX="367.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="scissorImage" fitHeight="115.0" fitWidth="119.0" layoutX="367.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../gameImages/ScissorClipArt.png" />
          </image>
@@ -34,7 +34,7 @@
             <Font size="24.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
+            <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
 	</children>

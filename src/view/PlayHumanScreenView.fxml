@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #4286f4 #4286f4;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #4286f4 #4286f4;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonPressed" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -16,7 +20,103 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Text layoutX="236.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Human!" wrappingWidth="107.2060546875" />
+      <Text fx:id="resultText" layoutX="227.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result Text" textAlignment="CENTER" wrappingWidth="246.2060546875">
+         <font>
+            <Font size="37.0" />
+         </font></Text>
+      <HBox layoutX="14.0" layoutY="402.0" prefHeight="77.0" prefWidth="233.0" spacing="20.0" style="-fx-background-color: darkgreen;">
+         <children>
+            <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/RockClipArt.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/PaperClipArt.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/ScissorClipArt.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="380.0" layoutY="402.0" prefHeight="77.0" prefWidth="233.0" spacing="20.0" style="-fx-background-color: darkred;">
+         <children>
+            <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/RockClipArt.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/PaperClipArt.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/ScissorClipArt.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </HBox>
+      <ImageView fx:id="player1Image" fitHeight="166.0" fitWidth="187.0" layoutX="74.0" layoutY="178.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../gameImages/AIThinkingClipArt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player2Image" fitHeight="187.0" fitWidth="187.0" layoutX="440.0" layoutY="157.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+         <image>
+            <Image url="@../../gameImages/AIThinkingClipArt.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="629.0" layoutY="16.0" mnemonicParsing="false" onAction="#resetButtonPressed" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../gameImages/ResetClipArt.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Pane layoutX="643.0" layoutY="150.0" prefHeight="200.0" prefWidth="43.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+      <ImageView fitHeight="200.0" fitWidth="265.0" layoutX="43.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../gameImages/QuestionMarkClipArt.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="15.0" layoutY="150.0" prefHeight="200.0" prefWidth="43.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0" />
+      <ImageView fitHeight="200.0" fitWidth="265.0" layoutX="409.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../gameImages/QuestionMarkClipArt.png" />
+         </image>
+      </ImageView>
    </children>
 </fx:root>
