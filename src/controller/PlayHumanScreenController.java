@@ -24,19 +24,19 @@ public class PlayHumanScreenController extends AnchorPane {
 	private static double PLAYER1_CLOSED_SLIDING_DOOR_X, PLAYER2_CLOSED_SLIDING_DOOR_X;
 	private static double PLAYER1_DOOR_OPENED_X = -204, PLAYER2_DOOR_OPENED_X = 655;
 
-	private static AnimationTimer openPlayer1Door, closePlayer1Door, openPlayer2Door, closePlayer2Door;
+	private static AnimationTimer openPlayer1SlidingDoor, closePlayer1SlidingDoor, openPlayer2SlidingDoor, closePlayer2SlidingDoor;
 	
 	/**
 	 * Player 1's initialization block to create what the sliding door does
 	 */
 	{
-		openPlayer1Door = new AnimationTimer(){	
+		openPlayer1SlidingDoor = new AnimationTimer(){	
 			@Override
 	        public void handle(long currentNanoTime){
 				double currentDoorX = player1SlidingDoor.getLayoutX();
 				
 				if(currentDoorX > PLAYER1_DOOR_OPENED_X) {
-					player1SlidingDoor.setLayoutY(currentDoorX - 5);
+					player1SlidingDoor.setLayoutX(currentDoorX - 5);
 				}
 				else {
 					stop();
@@ -44,14 +44,14 @@ public class PlayHumanScreenController extends AnchorPane {
 	        }
 	    };
 	    
-	    closePlayer1Door = new AnimationTimer() {
+	    closePlayer1SlidingDoor = new AnimationTimer() {
 
 			@Override
 			public void handle(long now) {
 				double currentDoorX = player1SlidingDoor.getLayoutX();
 				
 				if(currentDoorX < PLAYER1_CLOSED_SLIDING_DOOR_X) {
-					player1SlidingDoor.setLayoutY(currentDoorX + 5);
+					player1SlidingDoor.setLayoutX(currentDoorX + 5);
 				}
 				else {
 					stop();
@@ -65,7 +65,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * Player 2's initialization block to create what the sliding door does
 	 */
 	{
-		openPlayer2Door = new AnimationTimer(){	
+		openPlayer2SlidingDoor = new AnimationTimer(){	
 			@Override
 	        public void handle(long currentNanoTime){
 				double currentDoorX = player2SlidingDoor.getLayoutX();
@@ -79,7 +79,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	        }
 	    };
 	    
-	    closePlayer2Door = new AnimationTimer() {
+	    closePlayer2SlidingDoor = new AnimationTimer() {
 
 			@Override
 			public void handle(long now) {
@@ -130,16 +130,20 @@ public class PlayHumanScreenController extends AnchorPane {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		PLAYER1_CLOSED_SLIDING_DOOR_X = player1SlidingDoor.getLayoutX();
+		PLAYER2_CLOSED_SLIDING_DOOR_X = player2SlidingDoor.getLayoutX();
 		
 		return playHumanScreen;
 	}
 	
 	public void player1RockSelected(MouseEvent event) {
 		System.out.println("Player 1 Rock Selected");
+		openPlayer1Door();
 	}
 	
 	public void player1PaperSelected(MouseEvent event) {
 		System.out.println("Player 1 Paper Selected");
+		closePlayer1Door();
 	}
 	
 	public void player1ScissorSelected(MouseEvent event) {
@@ -148,16 +152,51 @@ public class PlayHumanScreenController extends AnchorPane {
 	
 	public void player2RockSelected(MouseEvent event) {
 		System.out.println("Player 2 Rock Selected");
+		openPlayer2Door();
 	}
 	
 	public void player2PaperSelected(MouseEvent event) {
 		System.out.println("Player 2 Paper Selected");
+		closePlayer2Door();
 	}
 	
 	public void player2ScissorSelected(MouseEvent event) {
 		System.out.println("Player 2 Scissor Selected");
 	}
 	
+	private void openPlayer1Door() {
+		openPlayer1SlidingDoor.stop();
+		resetPlayer1SlidingDoor();
+		openPlayer1SlidingDoor.start();
+	}
+	
+	private void closePlayer1Door() {
+		closePlayer1SlidingDoor.stop();
+		closePlayer1SlidingDoor.start();
+	}
+	
+	private void openPlayer2Door() {
+		openPlayer2SlidingDoor.stop();
+		resetPlayer2SlidingDoor();
+		openPlayer2SlidingDoor.start();
+	}
+	
+	private void closePlayer2Door() {
+		closePlayer2SlidingDoor.stop();
+		closePlayer2SlidingDoor.start();
+	}
+	
+	private void resetPlayer1SlidingDoor() {
+		player1SlidingDoor.setLayoutX(PLAYER1_CLOSED_SLIDING_DOOR_X);
+	}
+	
+	private void resetPlayer2SlidingDoor() {
+		player2SlidingDoor.setLayoutX(PLAYER2_CLOSED_SLIDING_DOOR_X);
+	}
+	private void resetDoors() {
+		resetPlayer1SlidingDoor();
+		resetPlayer2SlidingDoor();
+	}
 	/**
 	 * Method called when the reset button is clicked by
 	 * the user.

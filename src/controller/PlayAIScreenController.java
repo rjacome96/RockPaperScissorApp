@@ -200,13 +200,6 @@ public class PlayAIScreenController extends AnchorPane {
 	}
 	
 	/**
-	 * Resets the sliding door back to its closing position.
-	 */
-	private void resetSlidingDoor() {
-		slidingDoor.setLayoutY(CLOSED_SLIDING_DOOR_Y);
-	}
-	
-	/**
 	 * Changes the image for the AI back to default.
 	 */
 	private void resetAIChoice() {
@@ -216,6 +209,13 @@ public class PlayAIScreenController extends AnchorPane {
 	private void resetResultText() {
 		resultText.setText("");
 		resultText.setOpacity(0);
+	}
+	
+	/**
+	 * Resets the sliding door back to its closing position.
+	 */
+	private void resetSlidingDoor() {
+		slidingDoor.setLayoutY(CLOSED_SLIDING_DOOR_Y);
 	}
 	
 	private void openDoor() {
