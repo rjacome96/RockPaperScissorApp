@@ -17,16 +17,32 @@ public class PlayHumanScreenController extends AnchorPane {
 	Text resultText;
 	
 	@FXML
-	ImageView player1Image, player2Image;
+	ImageView player1Image, player1SlidingDoor, player2Image, player2SlidingDoor;
 
+	/**
+	 * Overwrite the default no argument constructor so that it
+	 * can be set to private.
+	 */
 	private PlayHumanScreenController() {
 		
 	}
 	
+	/**
+	 * Static method that allows the main application
+	 * to call and get the {@code Scene} that the method returns.
+	 * This method calls the {@link createPlayHumanScreen} method in
+	 * order to retrieve the {@code Scene}.
+	 * @return
+	 */
 	public static Scene getPlayHumanScreen() {
 		return new PlayHumanScreenController().createPlayHumanScreen();
 	}
 	
+	/**
+	 * Loads the FXML file into the controller and sets it to this 
+	 * specific scene.
+	 * @return
+	 */
 	private Scene createPlayHumanScreen() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PlayHumanScreenView.fxml"));
 		loader.setController(this);
@@ -41,6 +57,11 @@ public class PlayHumanScreenController extends AnchorPane {
 		return playHumanScreen;
 	}
 	
+	/**
+	 * Method called when the reset button is clicked by
+	 * the user.
+	 * @param event
+	 */
 	public void resetButtonPressed(ActionEvent event) {
 		System.out.println("Reset button pressed");
 	}
