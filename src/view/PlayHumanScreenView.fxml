@@ -28,7 +28,7 @@
          <font>
             <Font size="44.0" />
          </font></Text>
-      <HBox layoutX="14.0" layoutY="402.0" prefHeight="77.0" prefWidth="233.0" spacing="20.0" style="-fx-background-color: darkgreen;" AnchorPane.leftAnchor="14.0">
+      <HBox fx:id="player1HBox" layoutX="14.0" layoutY="402.0" prefHeight="77.0" prefWidth="233.0" spacing="20.0" style="-fx-background-color: darkgreen;" AnchorPane.leftAnchor="14.0">
          <children>
             <ImageView fitHeight="84.0" fitWidth="115.0" onMouseClicked="#player1RockSelected" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,7 +56,7 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox layoutX="380.0" layoutY="402.0" prefHeight="77.0" prefWidth="233.0" spacing="20.0" style="-fx-background-color: darkred;" AnchorPane.rightAnchor="14.0">
+      <HBox fx:id="player2HBox" layoutX="380.0" layoutY="402.0" prefHeight="77.0" prefWidth="233.0" spacing="20.0" style="-fx-background-color: darkred;" AnchorPane.rightAnchor="14.0">
          <children>
             <ImageView fitHeight="84.0" fitWidth="115.0" onMouseClicked="#player2RockSelected" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -116,8 +116,8 @@
             <Image url="@../../gameImages/QuestionMarkClipArt.png" />
          </image>
       </ImageView>
-      <Pane layoutX="15.0" layoutY="150.0" prefHeight="200.0" prefWidth="43.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0" />
-      <Pane layoutX="643.0" layoutY="150.0" prefHeight="200.0" prefWidth="43.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+      <Pane layoutX="15.0" layoutY="150.0" prefHeight="200.0" prefWidth="43.0" style="-fx-background-color: #4286f4 #4286f4;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0" />
+      <Pane layoutX="643.0" layoutY="150.0" prefHeight="200.0" prefWidth="43.0" style="-fx-background-color: #4286f4 #4286f4;" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
       <Text fill="#004000" layoutX="115.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
          <font>
             <Font size="28.0" />

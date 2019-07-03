@@ -11,20 +11,29 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import model.GameObject;
 
 public class PlayHumanScreenController extends AnchorPane {
 	
 	@FXML
-	Text resultText;
+	private Text resultText;
 	
 	@FXML
-	ImageView player1Image, player1SlidingDoor, player2Image, player2SlidingDoor;
+	private ImageView player1Image, player1SlidingDoor, player2Image, player2SlidingDoor;
+	
+	@FXML
+	private HBox player1HBox, player2HBox;
+	
+	private static GameObject player1Choice, player2Choice;
 	
 	private static double PLAYER1_CLOSED_SLIDING_DOOR_X, PLAYER2_CLOSED_SLIDING_DOOR_X;
-	private static double PLAYER1_DOOR_OPENED_X = -204, PLAYER2_DOOR_OPENED_X = 655;
+	private static final double PLAYER1_DOOR_OPENED_X = -204, PLAYER2_DOOR_OPENED_X = 655;
 
 	private static AnimationTimer openPlayer1SlidingDoor, closePlayer1SlidingDoor, openPlayer2SlidingDoor, closePlayer2SlidingDoor;
+	
+	private static boolean otherPlayerIsReady;
 	
 	/**
 	 * Player 1's initialization block to create what the sliding door does
@@ -132,6 +141,8 @@ public class PlayHumanScreenController extends AnchorPane {
 		}
 		PLAYER1_CLOSED_SLIDING_DOOR_X = player1SlidingDoor.getLayoutX();
 		PLAYER2_CLOSED_SLIDING_DOOR_X = player2SlidingDoor.getLayoutX();
+		resetResultText();
+		resetDoors();
 		
 		return playHumanScreen;
 	}
@@ -142,7 +153,6 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void player1RockSelected(MouseEvent event) {
 		System.out.println("Player 1 Rock Selected");
-		openPlayer1Door();
 	}
 	
 	/**
@@ -151,7 +161,6 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void player1PaperSelected(MouseEvent event) {
 		System.out.println("Player 1 Paper Selected");
-		closePlayer1Door();
 	}
 	
 	/**
@@ -168,7 +177,6 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void player2RockSelected(MouseEvent event) {
 		System.out.println("Player 2 Rock Selected");
-		openPlayer2Door();
 	}
 	
 	/**
@@ -177,7 +185,6 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void player2PaperSelected(MouseEvent event) {
 		System.out.println("Player 2 Paper Selected");
-		closePlayer2Door();
 	}
 	
 	/**
@@ -186,6 +193,25 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void player2ScissorSelected(MouseEvent event) {
 		System.out.println("Player 2 Scissor Selected");
+	}
+	
+	private void player1MadeDecision(GameObject decisionMade) {
+		makeHBoxTransparent(player1HBox);
+		player1Choice = decisionMade;
+	}
+	
+	private void player2MadeDecision(GameObject decisionMade) {
+		makeHBoxTransparent(player2HBox);
+		player2Choice = decisionMade;
+	}
+	
+	/**
+	 * Method called when the reset button is clicked by
+	 * the user.
+	 * @param event
+	 */
+	public void resetButtonPressed(ActionEvent event) {
+		resetGame();
 	}
 	
 	/**
@@ -247,7 +273,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	}
 	
 	/**
-	 * Method that takes the resulting messgae from the match and 
+	 * Method that takes the resulting message from the match and 
 	 * displays it by making it opaque.
 	 * @param resultMessage The message that resulted in who won or
 	 * if it was a draw.
@@ -256,7 +282,12 @@ public class PlayHumanScreenController extends AnchorPane {
 		resultText.setText(resultMessage);
 		resultText.setOpacity(1);
 	}
-	  
+	
+	private void makeHBoxTransparent(HBox hBox) {
+		hBox.setOpacity(.5);
+		hBox.setMouseTransparent(true);
+	}
+	
 	/**
 	 * Resets the result text to not being opaque and containing
 	 * empty text.
@@ -265,15 +296,30 @@ public class PlayHumanScreenController extends AnchorPane {
 		resultText.setOpacity(0);
 		resultText.setText("");
 	}
+	
+	private void resetPlayer1HBox() {
+		player1HBox.setOpacity(1);
+		player1HBox.setMouseTransparent(false);
+	}
+	
+	private void resetPlayer2HBox() {
+		player2HBox.setOpacity(1);
+		player2HBox.setMouseTransparent(false);
+	}
+	
+	private void resetHBoxes() {
+		resetPlayer1HBox();
+		resetPlayer2HBox();
+	}
+	
 	/**
-	 * Method called when the reset button is clicked by
-	 * the user.
-	 * @param event
+	 * Resets the game. Doors are closed and result
+	 * text is hidden.
 	 */
-	public void resetButtonPressed(ActionEvent event) {
-		System.out.println("Reset button pressed");
+	private void resetGame() {
 		resetDoors();
 		resetResultText();
+		resetHBoxes();
 	}
 	
 	/**
@@ -283,5 +329,6 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void backButtonPressed(ActionEvent event) {
 		RockPaperScissorMain.previousStage();
+		resetGame();
 	}
 }
