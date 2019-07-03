@@ -24,7 +24,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fx:id="resultText" layoutX="227.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result Text" textAlignment="CENTER" wrappingWidth="246.2060546875">
+      <Text fx:id="resultText" layoutX="197.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result Text" textAlignment="CENTER" wrappingWidth="305.9999916702509">
          <font>
             <Font size="44.0" />
          </font></Text>
@@ -128,7 +128,7 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Button fx:id="goButton" layoutX="329.0" layoutY="238.0" mnemonicParsing="false" onAction="#startMatch" text="GO!">
+      <Button fx:id="goButton" layoutX="316.0" layoutY="226.0" mnemonicParsing="false" onAction="#startMatch" prefHeight="49.0" prefWidth="69.0" text="GO!">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

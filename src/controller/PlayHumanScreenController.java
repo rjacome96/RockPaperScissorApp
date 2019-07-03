@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -150,6 +151,7 @@ public class PlayHumanScreenController extends AnchorPane {
 		PLAYER2_CLOSED_SLIDING_DOOR_X = player2SlidingDoor.getLayoutX();
 		resetResultText();
 		resetDoors();
+		resetGoButton();
 		
 		return playHumanScreen;
 	}
@@ -233,7 +235,25 @@ public class PlayHumanScreenController extends AnchorPane {
 	
 	
 	public void startMatch(ActionEvent event) {
-		System.out.println("GO!");
+		
+		player1Image.setImage(new Image(player1Choice.getFileURL()));
+		player2Image.setImage(new Image(player2Choice.getFileURL()));
+		
+		int result = player1Choice.compareTo(player2Choice);
+		
+		openDoors();
+		
+		if(result == 0) {
+			showResultText("Draw!");
+		}
+		else if(result < 0) {
+			showResultText("Player 2 Wins!");
+		}
+		else if(result > 0) {
+			showResultText("Player 1 Wins!");
+		}
+		
+		resetGoButton();
 	}
 	
 	/**
@@ -268,6 +288,11 @@ public class PlayHumanScreenController extends AnchorPane {
 	private void closePlayer2Door() {
 		closePlayer2SlidingDoor.stop();
 		closePlayer2SlidingDoor.start();
+	}
+	
+	private void openDoors() {
+		openPlayer1Door();
+		openPlayer2Door();
 	}
 	
 	/**
