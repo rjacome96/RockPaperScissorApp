@@ -15,6 +15,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.GameObject;
+import model.Paper;
+import model.Rock;
+import model.Scissor;
 
 public class PlayHumanScreenController extends AnchorPane {
 	
@@ -156,7 +159,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * @param event
 	 */
 	public void player1RockSelected(MouseEvent event) {
-		System.out.println("Player 1 Rock Selected");
+		player1MadeDecision(Rock.getRockObject());
 	}
 	
 	/**
@@ -164,7 +167,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * @param event
 	 */
 	public void player1PaperSelected(MouseEvent event) {
-		System.out.println("Player 1 Paper Selected");
+		player1MadeDecision(Paper.getPaperObject());
 	}
 	
 	/**
@@ -172,7 +175,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * @param event
 	 */
 	public void player1ScissorSelected(MouseEvent event) {
-		System.out.println("Player 1 Scissor Selected");
+		player1MadeDecision(Scissor.getScissorObject());
 	}
 	
 	/**
@@ -180,7 +183,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * @param event
 	 */
 	public void player2RockSelected(MouseEvent event) {
-		System.out.println("Player 2 Rock Selected");
+		player2MadeDecision(Rock.getRockObject());
 	}
 	
 	/**
@@ -188,7 +191,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * @param event
 	 */
 	public void player2PaperSelected(MouseEvent event) {
-		System.out.println("Player 2 Paper Selected");
+		player2MadeDecision(Paper.getPaperObject());
 	}
 	
 	/**
@@ -196,7 +199,7 @@ public class PlayHumanScreenController extends AnchorPane {
 	 * @param event
 	 */
 	public void player2ScissorSelected(MouseEvent event) {
-		System.out.println("Player 2 Scissor Selected");
+		player2MadeDecision(Scissor.getScissorObject());
 	}
 	
 	private void player1MadeDecision(GameObject decisionMade) {
@@ -229,8 +232,8 @@ public class PlayHumanScreenController extends AnchorPane {
 	}
 	
 	
-	public void startGame(ActionEvent event) {
-		
+	public void startMatch(ActionEvent event) {
+		System.out.println("GO!");
 	}
 	
 	/**
