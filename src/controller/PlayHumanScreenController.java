@@ -156,6 +156,13 @@ public class PlayHumanScreenController extends AnchorPane {
 		return playHumanScreen;
 	}
 	
+	/*
+	 * The following methods are connected to the FXML file
+	 * and are called whenever an action happens on the scene.
+	 * These methods use the helper methods that are further down
+	 * to be able to set up the following actions.
+	 */
+	
 	/**
 	 * Method called when the first player picks {@code Rock}.
 	 * @param event
@@ -204,36 +211,11 @@ public class PlayHumanScreenController extends AnchorPane {
 		player2MadeDecision(Scissor.getScissorObject());
 	}
 	
-	private void player1MadeDecision(GameObject decisionMade) {
-		makeHBoxTransparent(player1HBox);
-		player1Choice = decisionMade;
-		if(otherPlayerIsReady) {
-			activateGoButton();
-			return;
-		}
-		otherPlayerIsReady = true;
-	}
-	
-	private void player2MadeDecision(GameObject decisionMade) {
-		makeHBoxTransparent(player2HBox);
-		player2Choice = decisionMade;
-		if(otherPlayerIsReady) {
-			activateGoButton();
-			return;
-		}
-		otherPlayerIsReady = true;
-	}
-	
 	/**
-	 * Method called when the reset button is clicked by
-	 * the user.
+	 * Method that decides who won. Sets the corresponding images
+	 * and sets the resulting text.
 	 * @param event
 	 */
-	public void resetButtonPressed(ActionEvent event) {
-		resetGame();
-	}
-	
-	
 	public void startMatch(ActionEvent event) {
 		
 		player1Image.setImage(new Image(player1Choice.getFileURL()));
@@ -254,6 +236,69 @@ public class PlayHumanScreenController extends AnchorPane {
 		}
 		
 		resetGoButton();
+	}
+	
+	/**
+	 * Method called when the reset button is clicked by
+	 * the user.
+	 * @param event
+	 */
+	public void resetButtonPressed(ActionEvent event) {
+		resetGame();
+	}
+	
+	/**
+	 * Method is called when the user presses the back button
+	 * to return to the previous screen.
+	 * @param event
+	 */
+	public void backButtonPressed(ActionEvent event) {
+		RockPaperScissorMain.previousStage();
+		resetGame();
+	}
+	
+	/*
+	 * The following methods are private and are meant
+	 * to be used as helper methods to the controller
+	 * methods that are above.
+	 */
+	
+	/**
+	 * Resets the boolean value of the other
+	 * palyer to false.
+	 */
+	private void resetOtherPlayerBool() {
+		otherPlayerIsReady = false;
+	}
+	
+	/**
+	 * Method that sets the decision player 1 made and checks
+	 * if the opposing player made a decision or not.
+	 * @param decisionMade The decision that the player made.
+	 */
+	private void player1MadeDecision(GameObject decisionMade) {
+		makeHBoxTransparent(player1HBox);
+		player1Choice = decisionMade;
+		if(otherPlayerIsReady) {
+			activateGoButton();
+			return;
+		}
+		otherPlayerIsReady = true;
+	}
+	
+	/**
+	 * Method that sets the decision player 2 made and checks
+	 * if the opposing player made a decision or not.
+	 * @param decisionMade The decision that the player made.
+	 */
+	private void player2MadeDecision(GameObject decisionMade) {
+		makeHBoxTransparent(player2HBox);
+		player2Choice = decisionMade;
+		if(otherPlayerIsReady) {
+			activateGoButton();
+			return;
+		}
+		otherPlayerIsReady = true;
 	}
 	
 	/**
@@ -290,6 +335,10 @@ public class PlayHumanScreenController extends AnchorPane {
 		closePlayer2SlidingDoor.start();
 	}
 	
+	/**
+	 * Calls the players' methods that open
+	 * their doors.
+	 */
 	private void openDoors() {
 		openPlayer1Door();
 		openPlayer2Door();
@@ -330,11 +379,6 @@ public class PlayHumanScreenController extends AnchorPane {
 		resultText.setOpacity(1);
 	}
 	
-	private void makeHBoxTransparent(HBox hBox) {
-		hBox.setOpacity(.5);
-		hBox.setMouseTransparent(true);
-	}
-	
 	/**
 	 * Resets the result text to not being opaque and containing
 	 * empty text.
@@ -344,38 +388,64 @@ public class PlayHumanScreenController extends AnchorPane {
 		resultText.setText("");
 	}
 	
+	/**
+	 * Sets a given HBox opacity to .5 and
+	 * mouse transparency to true.
+	 * @param hBox The HBox that is modified.
+	 */
+	private void makeHBoxTransparent(HBox hBox) {
+		hBox.setOpacity(.5);
+		hBox.setMouseTransparent(true);
+	}
+	
+	/**
+	 * Sets player 1's HBox opacity to 1
+	 * and sets mouse transparency to false.
+	 */
 	private void resetPlayer1HBox() {
 		player1HBox.setOpacity(1);
 		player1HBox.setMouseTransparent(false);
 	}
 	
+	/**
+	 * Sets player 2's HBox opacity to 1
+	 * and sets mouse transparency to false.
+	 */
 	private void resetPlayer2HBox() {
 		player2HBox.setOpacity(1);
 		player2HBox.setMouseTransparent(false);
 	}
 	
+	/**
+	 * Calls the methods that reset the players' HBoxes.
+	 */
 	private void resetHBoxes() {
 		resetPlayer1HBox();
 		resetPlayer2HBox();
 	}
 	
-	private void resetOtherPlayerBool() {
-		otherPlayerIsReady = false;
-	}
-	
+	/**
+	 * Sets the opacity of the Go button to .5
+	 * and sets the mouse transparency to true.
+	 */
 	private void resetGoButton() {
 		goButton.setOpacity(.5);
 		goButton.setMouseTransparent(true);
 	}
 	
+	/**
+	 * Sets the opacity of the Go button to 1
+	 * and sets the mouse transparency to false.
+	 */
 	private void activateGoButton() {
 		goButton.setOpacity(1);
 		goButton.setMouseTransparent(false);
 	}
 	
 	/**
-	 * Resets the game. Doors are closed and result
-	 * text is hidden.
+	 * Resets the game. Doors are closed, result
+	 * text is hidden, HBoxes opaque, boolean value is false,
+	 * and go button is transparent.
 	 */
 	private void resetGame() {
 		resetDoors();
@@ -383,15 +453,5 @@ public class PlayHumanScreenController extends AnchorPane {
 		resetHBoxes();
 		resetOtherPlayerBool();
 		resetGoButton();
-	}
-	
-	/**
-	 * Method is called when the user presses the back button
-	 * to return to the previous screen.
-	 * @param event
-	 */
-	public void backButtonPressed(ActionEvent event) {
-		RockPaperScissorMain.previousStage();
-		resetGame();
 	}
 }
