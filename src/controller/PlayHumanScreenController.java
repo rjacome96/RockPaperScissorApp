@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,9 @@ public class PlayHumanScreenController extends AnchorPane {
 	
 	@FXML
 	private HBox player1HBox, player2HBox;
+	
+	@FXML
+	private Button goButton;
 	
 	private static GameObject player1Choice, player2Choice;
 	
@@ -198,11 +202,21 @@ public class PlayHumanScreenController extends AnchorPane {
 	private void player1MadeDecision(GameObject decisionMade) {
 		makeHBoxTransparent(player1HBox);
 		player1Choice = decisionMade;
+		if(otherPlayerIsReady) {
+			activateGoButton();
+			return;
+		}
+		otherPlayerIsReady = true;
 	}
 	
 	private void player2MadeDecision(GameObject decisionMade) {
 		makeHBoxTransparent(player2HBox);
 		player2Choice = decisionMade;
+		if(otherPlayerIsReady) {
+			activateGoButton();
+			return;
+		}
+		otherPlayerIsReady = true;
 	}
 	
 	/**
@@ -212,6 +226,11 @@ public class PlayHumanScreenController extends AnchorPane {
 	 */
 	public void resetButtonPressed(ActionEvent event) {
 		resetGame();
+	}
+	
+	
+	public void startGame(ActionEvent event) {
+		
 	}
 	
 	/**
@@ -312,6 +331,20 @@ public class PlayHumanScreenController extends AnchorPane {
 		resetPlayer2HBox();
 	}
 	
+	private void resetOtherPlayerBool() {
+		otherPlayerIsReady = false;
+	}
+	
+	private void resetGoButton() {
+		goButton.setOpacity(.5);
+		goButton.setMouseTransparent(true);
+	}
+	
+	private void activateGoButton() {
+		goButton.setOpacity(1);
+		goButton.setMouseTransparent(false);
+	}
+	
 	/**
 	 * Resets the game. Doors are closed and result
 	 * text is hidden.
@@ -320,6 +353,8 @@ public class PlayHumanScreenController extends AnchorPane {
 		resetDoors();
 		resetResultText();
 		resetHBoxes();
+		resetOtherPlayerBool();
+		resetGoButton();
 	}
 	
 	/**
